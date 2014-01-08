@@ -39,7 +39,10 @@ require.config({
   }
 });
 
-require(['jquery', 'jasmine-html', 'jasmine-blanket'], function($, jasmine, blanket) {
+require(['jquery', 'backbone', 'jasmine-html', 'jasmine-blanket'], function($, backbone, jasmine, blanket) {
+  
+  console.log(jasmine);
+  console.log(backbone);
   
   // data-cover-only (everything that is tested)
   // include this in code coverage
@@ -49,18 +52,14 @@ require(['jquery', 'jasmine-html', 'jasmine-blanket'], function($, jasmine, blan
   // dont't include this in code coverage
   window.blanket.options(
     'antifilter',
-    [
-      'test/',
-      'ces/system/render-system',
-      'game/canvas-handler',
-      'game/event-handler'
-    ]
+    ['test/',]
   );
 
   // 
   var specs = [];
   
   // App tests
+  specs.push('spec/app/app.test.js');
   specs.push('spec/app/model.test.js');
   
   $(function(){
