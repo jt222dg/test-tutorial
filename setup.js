@@ -1,7 +1,9 @@
 require.config({
 
+  // Base path
   baseUrl: 'lib/',
 
+  // Other paths, relative to base path
   paths: {
     // Base folder paths
     app               : '../app',
@@ -14,7 +16,8 @@ require.config({
     underscore        : 'underscore/underscore.min',
     jasmine           : 'jasmine/jasmine',
     'jasmine-html'    : 'jasmine/jasmine-html',
-    'jasmine-blanket' : 'jasmine/jasmine-blanket'
+    'jasmine-blanket' : 'jasmine/jasmine-blanket',
+    'test-runner'     : '../test-runner'
   },
   
   shim: {
@@ -39,44 +42,7 @@ require.config({
   }
 });
 
-require(['jquery', 'backbone', 'jasmine-html', 'jasmine-blanket'], function($, backbone, jasmine, blanket) {
-  
-  console.log(jasmine);
-  console.log(backbone);
-  
-  // data-cover-only (everything that is tested)
-  // include this in code coverage
-  window.blanket.options('filter', ['app/']);
-  
-  // data-cover-never (testing specs and certain view / event specific classes)
-  // dont't include this in code coverage
-  window.blanket.options(
-    'antifilter',
-    ['test/',]
-  );
-
-  // 
-  var specs = [];
-  
-  // App tests
-  specs.push('spec/app/app.test.js');
-  specs.push('spec/app/model.test.js');
-  
-  $(function(){
-    require(specs, function(){
-      
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 250;
-      
-      var htmlReporter = new jasmine.HtmlReporter();
-      jasmineEnv.addReporter(htmlReporter);
-      
-      jasmineEnv.specFilter = function (spec) {
-          return htmlReporter.specFilter(spec);
-      };
-      
-      jasmineEnv.addReporter(new jasmine.BlanketReporter());
-      jasmineEnv.currentRunner().execute();
-    });
-  });
+require(['test-runner'], function(Testrunner) {
+  Testrunner.initialize();
+  Testrunner.execute();
 });
