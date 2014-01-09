@@ -1,7 +1,7 @@
 define(function(require) {
   var Backbone = require('backbone');
   
-  return Backbone.extend.View({
+  return Backbone.View.extend({
   
     defaults : {
       

@@ -12,7 +12,7 @@ define(function(require) {
       window.blanket.options('filter', ['app/']);
       
       // data-cover-never
-      window.blanket.options('antifilter',['test/','app/view']);
+      window.blanket.options('antifilter',['spec/','app/view']);
     
       // Test specifications
       this.specs = [];

@@ -1,7 +1,7 @@
 define(function(require) {
   var Backbone = require('backbone');
   
-  return Backbone.extend.Model({
+  return Backbone.Model.extend({
   
     // Empty, just for testing purposes
     
