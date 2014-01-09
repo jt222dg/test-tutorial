@@ -7,7 +7,7 @@ define(function(require) {
     view  : new View(),
     
     save : function() {
-      this.model.save();
+      this.model.onSave();
     }
     
   };

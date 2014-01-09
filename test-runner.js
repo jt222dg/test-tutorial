@@ -19,7 +19,6 @@ define(function(require) {
       
       // App tests
       this.specs.push('spec/app/app.test.js');
-      this.specs.push('spec/app/model.test.js');
     },
     
     execute : function() {

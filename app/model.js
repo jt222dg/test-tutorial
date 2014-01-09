@@ -2,9 +2,9 @@ define(function(require) {
   var Backbone = require('backbone');
   
   return Backbone.Model.extend({
-  
-    // Empty, just for testing purposes
-    
+    onSave : function() {
+      this.save();
+    }
   });
   
 });
