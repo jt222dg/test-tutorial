@@ -4,6 +4,7 @@ define(function(require) {
   
   var jasmine  = require('jasmine-html');
   var _        = require('underscore');
+  var Backbone = require('backbone');
   
   var env = jasmine.getEnv();
   
@@ -21,6 +22,21 @@ define(function(require) {
       
       env.it('is defined', function() {
         this.spec.expect(App).toBeDefined();
+      });
+      
+    });
+    
+    env.describe('App.model databsae operations', function() {
+      
+      env.it('app.save() calls BackBone.sync()', function() {
+        
+        this.spec.spyOn(Backbone, 'sync').andCallFake(function() {
+        });
+        
+        App.save();
+        
+        this.spec.expect(Backbone.sync).toHaveBeenCalled();
+        
       });
       
     });
