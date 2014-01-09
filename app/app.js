@@ -1,10 +1,13 @@
 define(function(require) {
-  var Backbone = require('backbone');
+  var Model = require('app/model');
   
-  return Backbone.extend.Model({
-  
+  return {
+    model : new Model(),
     
+    save : function() {
+      this.model.save();
+    }
     
-  });
+  };
   
 });

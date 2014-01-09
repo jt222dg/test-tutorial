@@ -17,7 +17,7 @@ define(function(require) {
     
     render : function() {
       
-      // Empty
+      // Render something to the DOM
       
     }
     

@@ -3,7 +3,7 @@ define(function(require) {
   
   return Backbone.extend.Model({
   
-    
+    // Empty, just for testing purposes
     
   });
   
